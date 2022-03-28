@@ -19,7 +19,7 @@ trigger AccountTrigger on Account (after insert) {
         }
 
         if(taskList.size() > 0){
-            insert taskList;
+            insert taskList;  
         }
     }
 }
