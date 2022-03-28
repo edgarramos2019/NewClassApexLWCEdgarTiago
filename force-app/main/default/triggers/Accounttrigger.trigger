@@ -1,6 +1,6 @@
 //DESAFIO : toda vez que criar uma nova conta, com o campo Propriedade = Private, você deve criar uma tarefa para o proprietário da conta, dizendo para verificar os dados cadastrais da mesma.
 
-trigger Accounttrigger on Account (after insert) {
+trigger AccountTrigger on Account (after insert) {
 
     if(Trigger.isInsert && Trigger.isAfter){
 
@@ -13,6 +13,7 @@ trigger Accounttrigger on Account (after insert) {
                 taskObj.ActivityDate = System.Today();
                 taskObj.WhatId = aTemp.Id;
                 taskObj.OwnerId = aTemp.OwnerId;
+                //insert taskObj;
                 taskList.add(taskObj);
             }
         }
@@ -20,7 +21,5 @@ trigger Accounttrigger on Account (after insert) {
         if(taskList.size() > 0){
             insert taskList;
         }
-
     }
-
 }
